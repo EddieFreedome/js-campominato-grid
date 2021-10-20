@@ -18,47 +18,29 @@
 
 const difficolta = document.getElementById("difficulties")
 const playButton = document.getElementById("play")
-const squareContainer = document.querySelector(".square-container")
+const squareContainer = document.querySelector("square-container")
 
 //dopo aver flaggato il livello scelto, con il click facciamo leggere il valore che assume il livello
 //scelta livello
-playButton.addEventListener(click, function(){
-const level = difficolta.value; //value restituisce qualsiasi tipo sia di valore della variabile
+playButton.addEventListener(click, function(event){
 
-//una volta letta la difficolta' scelta dovra' essere creato il numero di celle corrispondenti alla difficolta'
-/*celle da creare*/ /*=*/ /*generatorecelletotali che sceglie in base alla difficolta'*/
-celleTotali = generaCelle(level); //ho asssunto il valore sottoforma di variabile del numero delle celle
-//ho bisogno ora di generare la griglia corrispondente al numero di celle
+  event.preventDefault();
+  const level = difficolta.value; //value restituisce qualsiasi tipo sia di valore della variabile
 
-})
+  //una volta letta la difficolta' scelta dovra' essere creato il numero di celle corrispondenti alla difficolta'
+  /*celle da creare*/ /*=*/ /*generatorecelletotali che sceglie in base alla difficolta'*/
+  const celleTotali = generaNumeroCelle(level); //ho asssunto il valore sottoforma di variabile del numero delle celle
+  //ho bisogno ora di generare la griglia corrispondente al numero di celle
+  generaGriglia(celleTotali);
+  console.log("l'utente ha scelto il livello", level);
+  console.log(`dovranno essere create ${celleTotali} celle.`);
+});
 
 const square = document.createElement("div")
 
-for (let i = 1; i <= 100 ; i++) {
-    //genero col
-    //attacco col
-    const square = document.createElement("div")
-    square.classList.add ("my-col")
-    if (i % 3 === 0 && i % 5 === 0)  {
-        square.classList.add("x3-5")
-        square.innerHTML = "FizzBuzz"
-    } else if (i % 5 === 0)  {
-        square.classList.add("x5")
-        square.innerHTML = "Buzz"
-    } else if (i % 3 === 0)  {
-        square.classList.add("x3")
-        square.innerHTML = "Fizz"
-    } else {
-        square.classList.add("std")
-        square.innerHTML = i
-    }
-
-containerGrid.append(square) //aggiunge alla pagina il mio html dopo averlo creato
-}
-
 //Funzioni: 
-function generaCelle (level){
-    let result; //creo variabile casistiche da restituire
+function generaNumeroCelle (level){
+  let result; //creo variabile casistiche da restituire
 
   switch (parseInt(level)) {
     case 1: //easy 100 celle
@@ -72,11 +54,11 @@ function generaCelle (level){
       break;
     }  
     
-    return result;
+  return result;
 }
 
 function generaGriglia(celleTotali) {
-    // Resetto tutto il contenuto del boardcontainer
+    // Resetto tutto il contenuto dello .square-container
     boardContainer.innerHTML = "";
     //calcolo la radice quadrata del numero di celle totali, visivamente si
     //traduce in un'area distribuita di 10 celle per riga x 10 celle per riga
@@ -88,11 +70,11 @@ function generaGriglia(celleTotali) {
     // Creo un ciclo in base al numero di celle da creare
     for (let i = 0; i < celleTotali; i++) {
       // genero una singola cella per volta fino al numero indicato dalla variabile
-      const cell = generateSingleCell(i, cellSize); //**
+      const cella = generaCellaSingola(i, cellSize); //**
   
       // Aggiungo la cella al boardContainer
       //boardContainer.innerHTML += cell;
-      boardContainer.append(cell);
+      boardContainer.append(cella);
     }
 //append.(cella) dopo aver creato tutte le celle div con create element
 }
@@ -135,7 +117,7 @@ function generaCellaSingola(){ //**
   
     cella.textContent = i + 1;
   
-    return cell;
+    return cella;
   }
 
 function onSingleCellClick (){

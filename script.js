@@ -100,7 +100,7 @@ function generaCellaSingola(){ //**
     //come con numeroCella.innerHTML = ?
 
     //lego ogni cella generata ad un indice numerico, ad un numero che indica il n. di cella
-    cella.numeroCella = i + 1;
+    cella.numeroCella = [i] + 1;
     //ad ogni click su cella viene attivata una classe di stile css per stilizzarla da cliccata
     cella.addEventListener("click", onSingleCellClick); //funzione adhoc richiamata
     

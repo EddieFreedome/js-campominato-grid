@@ -18,12 +18,11 @@
 
 const difficolta = document.getElementById("difficulties")
 const playButton = document.getElementById("play")
-const squareContainer = document.querySelector("square-container")
+const squareContainer = document.querySelector(".square-container")
 
 //dopo aver flaggato il livello scelto, con il click facciamo leggere il valore che assume il livello
 //scelta livello
-playButton.addEventListener(click, function(event){
-
+playButton.addEventListener("click", function(event){
   event.preventDefault();
   const level = difficolta.value; //value restituisce qualsiasi tipo sia di valore della variabile
 
@@ -59,7 +58,7 @@ function generaNumeroCelle (level){
 
 function generaGriglia(celleTotali) {
     // Resetto tutto il contenuto dello .square-container
-    boardContainer.innerHTML = "";
+    squareContainer.innerHTML = "";
     //calcolo la radice quadrata del numero di celle totali, visivamente si
     //traduce in un'area distribuita di 10 celle per riga x 10 celle per riga
     const perRowCells = Math.sqrt(celleTotali);
@@ -72,9 +71,9 @@ function generaGriglia(celleTotali) {
       // genero una singola cella per volta fino al numero indicato dalla variabile
       const cella = generaCellaSingola(i, cellSize); //**
   
-      // Aggiungo la cella al boardContainer
-      //boardContainer.innerHTML += cell;
-      boardContainer.append(cella);
+      // Aggiungo la cella al squareContainer
+      //squareContainer.innerHTML += cell;
+      squareContainer.append(cella);
     }
 //append.(cella) dopo aver creato tutte le celle div con create element
 }

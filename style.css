@@ -33,6 +33,18 @@ h1{
     height: 400px;
 }
 
+.square-container .square {
+    min-height: 20px;
+    border: 1px solid;
+    width: 10%;
+    height: 10%;
+    background-color: #e9e9e9;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: inset 3px 3px 1px 1px rgb(255 255 255 / 65%),
+      inset -3px -3px 1px 1px rgb(0 0 0 / 15%);
+  }
+
 .caption{
     height: 100%;
     padding: 10px;
@@ -45,3 +57,5 @@ h1{
 .d-flex{
     display: flex;
 }
+
+.square

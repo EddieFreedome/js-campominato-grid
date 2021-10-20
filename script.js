@@ -28,7 +28,9 @@ playButton.addEventListener("click", function(event){
 
   //una volta letta la difficolta' scelta dovra' essere creato il numero di celle corrispondenti alla difficolta'
   /*celle da creare*/ /*=*/ /*generatorecelletotali che sceglie in base alla difficolta'*/
-  const celleTotali = generaNumeroCelle(level); //ho asssunto il valore sottoforma di variabile del numero delle celle
+  const celleTotali = generaNumeroCelle(level);
+  console.log(level)
+  console.log(celleTotali) //ho asssunto il valore sottoforma di variabile del numero delle celle
   //ho bisogno ora di generare la griglia corrispondente al numero di celle
   generaGriglia(celleTotali);
   console.log("l'utente ha scelto il livello", level);
@@ -62,9 +64,11 @@ function generaGriglia(celleTotali) {
     //calcolo la radice quadrata del numero di celle totali, visivamente si
     //traduce in un'area distribuita di 10 celle per riga x 10 celle per riga
     const perRowCells = Math.sqrt(celleTotali);
+    console.log(celleTotali)
     //posto che ci son 10 celle per riga, quali dimensioni dovranno avere?
     //1 cella = 100% / numeroCelle per riga!
     const cellSize = 100 / perRowCells;
+    console.log(perRowCells)
     //trovato il numero di celle per riga e la dimensione che devono occupare,
     // Creo un ciclo in base al numero di celle da creare
     for (let i = 0; i < celleTotali; i++) {
@@ -78,7 +82,7 @@ function generaGriglia(celleTotali) {
 //append.(cella) dopo aver creato tutte le celle div con create element
 }
 
-function generaCellaSingola(){ //**
+function generaCellaSingola(i, cellSize){ //**
     //anziche' creare una variabile Cella e scrivergli con il template `div class, style ecc..`
     //creo una cella "div" con createElement e la andro' 
     //ad appendere e stilizzare poi aggiungendo classi nel corso della funzione.
@@ -99,7 +103,7 @@ function generaCellaSingola(){ //**
     //come con numeroCella.innerHTML = ?
 
     //lego ogni cella generata ad un indice numerico, ad un numero che indica il n. di cella
-    cella.numeroCella = [i] + 1;
+    cella.numeroCella = [i + 1];
     //ad ogni click su cella viene attivata una classe di stile css per stilizzarla da cliccata
     cella.addEventListener("click", onSingleCellClick); //funzione adhoc richiamata
     
@@ -115,8 +119,7 @@ function generaCellaSingola(){ //**
   
   
     cella.textContent = i + 1;
-  
-    return cella;
+  return cella;
   }
 
 function onSingleCellClick (){

@@ -112,21 +112,33 @@ function generaCellaSingola(){ //**
     cella.style.height = cellSize + "%";
     
 
-    //----- non ho capito ---/
+    //----- non ho capito ---// E' una variabile innestata?
+    //E' una sostituzione di variabile/dichiarazione di una variabile/innesto?: cella con numeroCella/ numeroCella dentro cella
     // cell.numeroCella = i + 1;
+    //come con numeroCella.innerHTML = ?
 
-    // cell.addEventListener("click", onSingleCellClick);
-    // // cell.addEventListener("click", () => onSingleCellClick(i + 1, cell));
-    // /*   cell.addEventListener("click", function () {
-    //     this.classList.toggle("clicked");
+    //lego ogni cella generata ad un indice numerico, ad un numero che indica il n. di cella
+    cella.numeroCella = i + 1;
+    //ad ogni click su cella viene attivata una classe di stile css per stilizzarla da cliccata
+    cella.addEventListener("click", onSingleCellClick); //funzione adhoc richiamata
     
-    //     console.log("clickata cella #" + (i + 1));
-    //   }); */
+    //Arrow Function: 
+    // cella.addEventListener("click", () => onSingleCellClick(i + 1, cell));
+
+    //Funzione normale
+    /*   cella.addEventListener("click", function () {
+        this.classList.toggle("clicked");
+    
+        console.log("clickata cella #" + (i + 1));
+      }); */
   
   
-    // cell.textContent = i + 1;
+    cella.textContent = i + 1;
   
-    // return cell;
+    return cell;
   }
 
+function onSingleCellClick (){
+  //quando clicco la cella, aggiungi classi active, se la ha gia' va tolta
+  this.classList.toggle("clicked");
 }
